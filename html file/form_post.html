@@ -1,0 +1,155 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  color: aliceblue;
+  background-color: rgb(49, 48, 48);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Add padding to containers */
+.container {
+  /* padding: 12px; */
+  background-color: white;
+}
+
+
+.textred {
+  color: red;
+}
+
+/* Full-width input fields */
+input[type=text], input[type=password], input[type='number'],input[type='date'] {
+  width: 30%;
+  padding: 8px;
+  margin: 2px 0 15px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+  border-radius: 5px;
+}
+
+
+input[type=text]:focus, input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+  border-radius: 5px;
+}
+
+/* Overwrite default styles of hr */
+hr {
+  margin-bottom: 25px;
+  border-radius: 5px;
+  border-top: 5px solid #00b8e6;
+}
+
+/* Set a style for the submit button */
+.registerbtn {
+  background-color: #00b8e6;
+  color: white;
+  padding: 7px 15px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 30%;
+  opacity: 0.9;
+  border-radius: 5px;
+}
+
+.registerbtn:hover {
+  opacity: 1;
+}
+
+/* Add a blue text color to links */
+a {
+  color: dodgerblue;
+}
+
+/* Set a grey background color and center the text of the "sign in" section */
+.signin {
+  background-color: #f1f1f1;
+  text-align: center;
+}
+
+
+</style>
+</head>
+<body>
+
+<form action="http://127.0.0.1:8000/api/steam/signup" method="post">
+  <h1 class="body">STEAM</h1>
+  <div class="container,login-block,a">
+ 
+    <h2>Create An Account</h2>
+    <hr>
+
+    <label for="name"><b>Name</b></label><br>
+    <input type="text" placeholder="Enter your Name" name="name" id="name" >
+    <br>
+
+    <label for="username"><b>Username</b></label><br>
+    <input type="text" placeholder="Enter your Username" name="username" id="username" >
+    <br>
+
+    <label for="email"><b>Email</b></label><br>
+    <input type="text" placeholder="Enter your Email" name="email" id="email" >
+   
+    <br>
+
+    <label for="phone"><b>Phone Number</b></label><br>
+    <input type="text" placeholder="Enter your phone" name="phone" id="phone" >
+    <br>
+
+    <label for="password"><b>Password</b></label><br>
+    <input type="password" placeholder="Enter Password" name="password" id="password" >
+    <br>
+    
+    <button type="button" class="registerbtn" onclick="loadDoc()" >SUBMIT</button>
+  </div>
+ 
+</form>
+
+
+<script>
+  function loadDoc() {
+      const xhttp = new XMLHttpRequest();
+      var data=[];
+       data = {
+                  Name: document.getElementById("name").value,
+                  Username: document.getElementById("username").value,
+                  Email: document.getElementById("email").value,
+                  Phone: document.getElementById("phone").value,
+                  Password: document.getElementById("password").value
+              };
+              
+    console.log(JSON.stringify(data));
+    xhttp.open("post", "http://127.0.0.1:8000/api/steam/signup");
+    xhttp.setRequestHeader('Content-Type', 'application/json');
+    xhttp.responseType = 'json';
+    xhttp.send(JSON.stringify(data));
+    
+  }
+  
+  </script>
+
+
+</body>
+</html>
+
+
+
+
+
+
+        
+ 
+     
+    

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    
+    <title>Seeker_list_api</title>
+</head>
+<body onload="loadDoc()">
+    <div class="container">
+      <h2>Steamer List [API TEST]</h2>
+
+       <table class="table">
+        <thead>
+          <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Phone</th>
+                
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+                <td id="id"></td>
+                <td id="Name"></td>
+                <td id="Username"></td>
+                <td id="Email"></td>
+                <td id="Phone"></td>
+                
+          </tr>      
+        </tbody>
+      </table>
+    </div>
+    
+
+
+
+
+<script>
+		function loadDoc(){
+			const xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = function(){
+				if(this.readyState == 4 && this.status == 200){
+					var obj_arr = JSON.parse(this.responseText);
+					
+
+                    document.getElementById("id").innerHTML = obj_arr[0].id;
+                    document.getElementById("Name").innerHTML = obj_arr[0].Name;
+                    document.getElementById("Username").innerHTML = obj_arr[0].Username;
+                    document.getElementById("Email").innerHTML = obj_arr[0].Email;
+                    document.getElementById("Phone").innerHTML = obj_arr[0].Phone;
+                
+                    
+				}
+			};
+			xhttp.open("GET", "http://127.0.0.1:8000/api/steamers/list");
+			xhttp.send();
+		}
+	</script>
+
+
+
+
+</body>
+
+    
+    
+</body>
+</html>
